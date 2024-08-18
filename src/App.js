@@ -11,6 +11,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/profile-wall" element={<ProfileWall />} />
         <Route path="/register" element={<RegistrationForm />} />
+        <Route path="*" component={HomePage} />
       </Routes>
     </BrowserRouter>
   );

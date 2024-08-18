@@ -26,8 +26,8 @@ const RegistrationForm = () => {
         }
       );
       if (response.ok) {
+        setFormData({ name: "", age: "", location: "", profession: "" });
         alert("Profile Added");
-        window.location.reload();
       } else {
         alert("Error while adding profile");
       }
