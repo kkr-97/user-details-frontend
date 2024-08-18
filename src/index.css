@@ -5,9 +5,208 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(180deg, #fff, #fcebe6);
+  min-height: 100vh;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.home-page-bg {
+  text-align: center;
+  padding: 50px;
+  background-color: #f0f2f5;
+}
+
+.logo {
+  height: 40px;
+}
+
+.home-page {
+  margin-top: 20px;
+}
+
+.button-link {
+  text-decoration: none;
+}
+
+.cta-button {
+  background: linear-gradient(90deg, #a92600, #081926);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  margin: 7px;
+  transition: transform 0.3s;
+}
+
+.cta-button:hover {
+  transform: scale(1.1);
+}
+
+.cta-button:active {
+  background-color: #004494;
+  transform: scale(0.98);
+}
+
+.register-page {
+  min-width: 400px;
+  max-width: 40%;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.register-page .form-group {
+  margin-bottom: 20px;
+}
+
+.register-page .form-group label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.register-page .form-group input, .register-page .form-group input[type="password"] {
+  margin-bottom: 8px;
+  width: 90%;
+  border: 1px solid #ccc;
+  padding: 12px;
+  border-radius: 5px;
+}
+
+h1 {
+  color: #0f172a;
+}
+
+h1 span { 
+  color: rgb(224 51 0);
+}
+
+.profile-wall {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.back-link {
+  text-decoration: none;
+}
+
+.blk-button {
+  background-color: #0f172a;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 0 12px 12px 0;
+  transition: background-color 0.3s;
+}
+
+.blk-button:hover {
+  background-color: #0f172a60;
+}
+
+.profile-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.profile-card {
+  background-image: linear-gradient(to right, #a92600, #430f00);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex: 1 1 calc(33.333% - 20px);
+  box-sizing: border-box;
+  height: 230px;
+  color: #CCC;
+  transition: transform 0.3s;
+}
+
+.profile-card:hover {
+  transform: scale(1.05);
+}
+
+.profile-name {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.profile-detail {
+  font-size: 1em;
+  margin: 5px 0;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination-button {
+  background-color: #fff;
+  color: #0f172a;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.pagination-button:hover {
+  background-color: #eee;
+}
+
+.pagination-info {
+  font-size: 1em;
+  margin: 0 10px 10px 10px;
+}
+
+@media (max-width: 768px) {
+  .register-page {
+    max-width: 80%;
+  }
+
+  .profile-card {
+    flex: 1 1 calc(50% - 20px);
+  }
+
+  .home-page-bg {
+    padding: 30px;
+  }
+
+  .logo {
+    height: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .register-page {
+    max-width: 90%;
+  }
+
+  .profile-card {
+    flex: 1 1 100%;
+    height: auto;
+  }
+
+  .home-page-bg {
+    padding: 20px;
+  }
+
+  .cta-button {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
 }
