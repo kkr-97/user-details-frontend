@@ -13,11 +13,19 @@ function ProfileWall() {
       setLoading(true);
       try {
         const response = await fetch(
-          `http://localhost:3001/api/profiles?page=${page}&limit=${profilesPerPage}`
+          `https://goformeet-api.onrender.com/api/profiles?page=${page}&limit=${profilesPerPage}`
         );
         const data = await response.json();
+
+        const list = data.profiles;
+        list.sort((a, b) => {
+          if (a.location < b.location) return -1;
+          if (a.location > b.location) return 1;
+          return 0;
+        });
+
+        setProfiles(list);
         setTotalPages(data.totalPages);
-        setProfiles(data.profiles);
       } catch (error) {
         console.error("Error fetching profiles:", error);
       } finally {
@@ -42,6 +50,7 @@ function ProfileWall() {
         "loading..."
       ) : (
         <>
+          <h2>Profile List(sorted by location)</h2>
           <div className="profile-list">
             {profiles.map((profile) => (
               <div key={profile._id} className="profile-card">
