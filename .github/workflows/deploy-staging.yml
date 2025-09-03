@@ -12,8 +12,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      BUNNY_STORAGE_ZONE: og-experience-staging
-      BUNNY_STORAGE_ACCESS_KEY: c2ba3d16-aebb-4763-81a9ddb9a98c-83c7-40a9
+      BUNNY_STORAGE_ZONE: test-staging-workflow
+      BUNNY_STORAGE_ACCESS_KEY: e7264582-8710-47cb-9923e3c18284-9eab-4234
       BUNNY_API_KEY: ac483308-c329-48e7-be29-c6599f20f7ac0c34d20c-8e3a-494c-8399-4c071f6a797f
       BUNNY_PULL_ZONE_URL: https://og-experience-staging.b-cdn.net
     steps:
