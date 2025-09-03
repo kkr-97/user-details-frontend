@@ -38,7 +38,10 @@ jobs:
           sudo apt-get update && sudo apt-get install -y file
           find . -type f -print0 | while IFS= read -r -d '' file; do
             rel="${file#./}"
-            rel_encoded=$(printf '%s' "$rel" | jq -sRr @uri)   # encode spaces/special chars
+            dir=$(dirname "$rel")
+            base=$(basename "$rel")
+            base_encoded=$(printf '%s' "$base" | jq -sRr @uri)   # only encode filename
+            rel_encoded="${dir}/${base_encoded}"
             mime=$(file -b --mime-type "$file" 2>/dev/null || echo "application/octet-stream")
             echo "Uploading $rel → $rel_encoded"
             curl -sS -X PUT -T "$file" \
@@ -47,6 +50,7 @@ jobs:
               -H "Content-Type: ${mime}" \
               --fail || { echo "Failed to upload $rel"; exit 1; }
           done
+
 
       - name: Purge Bunny CDN cache
         run: |
