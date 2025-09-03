@@ -2,7 +2,7 @@ import HomePage from "./the components/HomePage";
 import ProfileWall from "./the components/ProfileWall";
 import RegistrationForm from "./the components/RegisterForm";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./App.css";
+import "./App styling.css";
 
 function App() {
   return (
