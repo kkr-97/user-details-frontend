@@ -38,12 +38,14 @@ jobs:
           sudo apt-get update && sudo apt-get install -y file
           find . -type f -print0 | while IFS= read -r -d '' file; do
             rel="${file#./}"
+            rel_encoded=$(printf '%s' "$rel" | jq -sRr @uri)   # encode spaces/special chars
             mime=$(file -b --mime-type "$file" 2>/dev/null || echo "application/octet-stream")
-            if [ -r "$file" ]; then
-              curl -sS -X PUT -T "$file" "https://sg.storage.bunnycdn.com/${BUNNY_STORAGE_ZONE}/${rel}" -H "AccessKey: ${BUNNY_STORAGE_ACCESS_KEY}" -H "Content-Type: ${mime}" --fail || { echo "Failed to upload $file"; exit 1; }
-            else
-              echo "Skipping $file: File not readable or does not exist"
-            fi
+            echo "Uploading $rel → $rel_encoded"
+            curl -sS -X PUT -T "$file" \
+              "https://storage.bunnycdn.com/${BUNNY_STORAGE_ZONE}/${rel_encoded}" \
+              -H "AccessKey: ${BUNNY_STORAGE_ACCESS_KEY}" \
+              -H "Content-Type: ${mime}" \
+              --fail || { echo "Failed to upload $rel"; exit 1; }
           done
 
       - name: Purge Bunny CDN cache
